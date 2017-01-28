@@ -1,0 +1,15 @@
+
+- name: "Add helper: {{ inventory_hostname }} {{ interface['section_name'] }}"
+  nxos_config:
+    host: "{{ inventory_hostname }}"
+    parents: "{{ interface['section_name'] }}"
+    lines:
+      - "{{ helper_keyword[os] }} {{ new_helper }}"
+  register: config_changes
+  notify: "{{ os + '_save_config' }}"
+  retries: 10
+
+- name: Append changes to log ({{ os }})
+  set_fact:
+    changes: "{{ changes + ['*** ROLE: ' + role_path|basename + ' ***'] + config_changes['updates'] }}"
+  when: config_changes['updates'] is defined

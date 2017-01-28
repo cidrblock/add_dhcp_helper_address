@@ -1,0 +1,8 @@
+---
+  - name: Retrieve configuration for IOS
+    ios_command:
+      host:     "{{ inventory_hostname }}"
+      commands:
+        - show run | e clock-period
+      timeout: 60
+    register: output

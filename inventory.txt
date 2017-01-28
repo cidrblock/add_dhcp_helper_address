@@ -1,0 +1,2 @@
+router1.company.net
+router2.company.net

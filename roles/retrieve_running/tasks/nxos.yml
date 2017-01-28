@@ -1,0 +1,8 @@
+---
+  - name: Retrieve configuration for NX-OS
+    nxos_command:
+      host:     "{{ inventory_hostname }}"
+      commands:
+        - show run | exclude \(!Time\)
+      timeout: 60
+    register: output

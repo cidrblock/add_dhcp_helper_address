@@ -1,0 +1,36 @@
+  - name: ios_save_config
+    ios_command:
+      host:     "{{ inventory_hostname }}"
+      commands:
+        - write memory
+      timeout: 60
+
+  - name: iosxe_save_config
+    ios_command:
+      host:     "{{ inventory_hostname }}"
+      commands:
+        - write memory
+      timeout: 60
+
+  - name: nxos_save_config
+    nxos_command:
+      host:     "{{ inventory_hostname }}"
+      commands:
+        - copy run start
+      timeout: 60
+
+  - name: asa_save_config
+    asa_command:
+      host:     "{{ inventory_hostname }}"
+      authorize: yes
+      commands:
+        - wr mem
+      timeout: 60
+
+  - name: fwsm_save_config
+    asa_command:
+      host:     "{{ inventory_hostname }}"
+      authorize: yes
+      commands:
+        - wr mem
+      timeout: 60

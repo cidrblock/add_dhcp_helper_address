@@ -1,0 +1,10 @@
+  - name: run playbook
+    hosts: all
+    connection: local
+    gather_facts: no
+    roles:
+      - metadata
+      - retrieve_running
+      - get_interfaces
+      - add_helpers
+      - report

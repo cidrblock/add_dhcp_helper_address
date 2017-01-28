@@ -1,0 +1,8 @@
+---
+  - name: Retrieve device configuration for ASA
+    asa_command:
+      authorize: yes
+      host: "{{ inventory_hostname }}"
+      commands:
+        - show run
+    register: output

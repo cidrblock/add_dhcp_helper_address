@@ -1,0 +1,11 @@
+---
+  - name: Include OS files for config retrieval
+    include: "{{ item }}"
+    with_first_found:
+      - files:
+         - "{{ os }}.yml"
+         - default.yml
+
+  - name: Set the running configuration as a fact
+    set_fact:
+      running_config: "{{ output['stdout_lines'][0] }}"

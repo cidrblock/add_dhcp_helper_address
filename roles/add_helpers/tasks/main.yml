@@ -1,0 +1,7 @@
+---
+  - name: Include OS files for interface helper addition
+    include: "{{ item }}"
+    with_first_found:
+      - files:
+         - "{{ os }}.yml"
+         - default.yml

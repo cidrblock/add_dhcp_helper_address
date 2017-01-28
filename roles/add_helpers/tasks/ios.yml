@@ -1,0 +1,6 @@
+
+  - name: Include files for interface helper addition on {{ os }}
+    include: ios_interface.yml
+    with_items: "{{ interfaces['matches']['sections'] }}"
+    loop_control:
+      loop_var: interface

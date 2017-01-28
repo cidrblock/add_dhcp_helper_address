@@ -1,0 +1,3 @@
+---
+  - name: Log missing config retrieval tasks for a given OS
+    debug: var=os

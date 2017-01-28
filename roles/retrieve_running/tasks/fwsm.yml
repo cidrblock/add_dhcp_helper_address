@@ -1,0 +1,8 @@
+---
+  - name: Retrieve device configuration for FWSM
+    asa_command:
+      authorize: yes
+      host: "{{ inventory_hostname }}"
+      commands:
+        - show run
+    register: output

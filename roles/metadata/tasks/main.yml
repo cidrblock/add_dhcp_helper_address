@@ -1,0 +1,16 @@
+# because at this point we do not know the OS of the device, we will treat all devices as IOS.
+
+ - name: Run show version
+   ios_command:
+     commands: show version
+     host: "{{ inventory_hostname }}"
+   ignore_errors: yes
+   register: ssh_output
+
+# now that we have the version information, set a fact for the OS that can be used in the rest of the playook.
+
+ - name: Set fact for os and ssh_accessible
+   set_fact:
+     os: "{{ 'unknown' if ssh_output|failed else ssh_output['stdout'][0]|determine_os}}"
+     ssh_accessible: "{{ ssh_output|succeeded }}"
+     ssh_issue: "{{ ssh_output['msg'] if ssh_output|failed else 'none' }}"

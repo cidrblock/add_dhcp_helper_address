@@ -1,0 +1,8 @@
+- name: Get interfaces with helper_keyword
+  get_section:
+    lines: "{{ running_config }}"
+    match: "^interface"
+    child_match: "{{ helper_keyword[os] }}"
+    children_that_match: True
+    min_child_lines: 0
+  register: interfaces
